@@ -1,0 +1,41 @@
+<mat-toolbar class="main-toolbar">
+  <mat-toolbar-row>
+      <span>Warehouses</span>
+      <span class="example-spacer"></span>
+      <div class="add-searchBtn" fxLayout="row" fxLayoutAlign="end" fxLayoutGap="2vw">
+            <button mat-raised-button color="accent" (click)="onAdd()">Add</button>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
+<div class="separator"></div>
+
+<form class="form-inline">
+    <input class="form-control" name="searchInput" placeholder="    Search for warehouses by name or id" #searchInput="ngModel" [(ngModel)]="searchText" style="width: 60%">
+    <button #clearBtn class="btn btn-outline-primary" (click)="searchText=''">X</button>
+</form>
+
+<table class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
+    <ng-container *ngFor="let warehouse of _warehouses$ | async">
+           
+        <tr fxLayout.xs="column" *ngIf="filterCondition(warehouse.result)">
+    
+          
+                <table>
+                    <tr><td class="name">{{warehouse.result.id}}</td></tr>
+                    <tr><td class="name">{{warehouse.result.name}} </td></tr>
+                    <tr><td class="name">{{warehouse.result.inventory_qty}}</td></tr>
+                    
+                </table>
+            </td>
+        
+         
+    
+           
+            <td class="btn">                   
+                <button mat-raised-button color="primary" (click)="onDetails(warehouse.id)">More</button>     
+            </td>
+      
+        </tr>
+    </ng-container>
+</table>
+    

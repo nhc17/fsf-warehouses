@@ -2,22 +2,21 @@ create database warehouses;
 
 use warehouses;
 
-create table warehouses (
+create table warehouse (
     warehouse_id    int(2) not null,
     warehouse_name  varchar(30) not null,
     inventory_qty   int(4) not null,
 
     primary key(warehouse_id)
-);
+)
 
 create table products (
     product_id  int(2) not null,
     name        varchar(30) not null,
     qty         int(3) not null,
-    warehouse_id int(2) not null,
-
+    
     primary key(product_id)
-);
+)
 
 create table inventories (
     warehouse_id int(2) not null,
@@ -50,7 +49,7 @@ INSERT INTO products (product_id, name, qty) VALUES
 (2, "Dryer", 1000),
 (3, "Game Console", 1000);
 
-INSERT INTO Iinventories (warehouse_id, warehouse_name, product_id, name, qty) VALUES
+INSERT INTO inventories (warehouse_id, warehouse_name, product_id, name, qty) VALUES
 (1, "Tuas", 1, "Television", 30),
 (1, "Tuas", 2, "Dryer", 40),
 (1, "Tuas", 3, "Game Console", 30),
